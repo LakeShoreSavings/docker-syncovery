@@ -43,7 +43,7 @@ There are only two paths which are used:
 If your syncovery should work with files on the host filesystem, make sure to bind them into your container (see examples below, just extend the volumes / -v parts).
 
 # Environment variables (with default values)
-- TZ=Europe/Berlin
+- TZ=America/New_York
     - Set your timezone here (see Time / Date below)
 - SYNCOVERY_HOME=/config
     - Changes the default location of syncovery config files (changing should work but was never tested - so use at your own risk)
@@ -53,10 +53,11 @@ If your syncovery should work with files on the host filesystem, make sure to bi
     - NO EFFECTS, only needed for build process
 
 # Time / Date
-If you do not change your timezone (see environment variables) syncovery will user Europe/Berlin as default timezone. But if you want to make sure syncovery is using the correct time and date, you need to specify your timezone.
+If you do not change your timezone (see environment variables) syncovery will user America/New_York as default timezone. But if you want to make sure syncovery is using the correct time and date, you need to specify your timezone.
 List of possible timezones: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 Examples:
+- America/New_York
 - Europe/Berlin
 - Africa/Windhoek
 - America/Costa_Rica
@@ -75,13 +76,13 @@ This image uses the default ports:
            container_name: syncoverycl
            hostname: syncoverycl
            restart: unless-stopped
-           image: stefanruepp/syncoverycl
+           image: lakeshoresavings/syncoverycl
            volumes:
                - ./config:/config
                - ./tmp:/tmp
                - /:/server:ro
            environment:
-                TZ: Europe/Berlin
+                TZ: America/New_York
            ports:
                 - 8999:8999
                 - 8900:8900
@@ -170,7 +171,7 @@ services:
                         - /var/run/docker.sock:/var/run/docker.sock
                 restart: unless-stopped
                 environment:
-                        TZ: Europe/Berlin
+                        TZ: America/New_York
                 user: "0:0"
                 entrypoint: /var/jenkins_home/ruepp/custom_entry.sh
 ```
@@ -179,7 +180,7 @@ services:
 Jenkins is triggered by the URLTrigger (plugin). This plugin checks if there is a new version. If there is one, a bash script extracts all needes version and download links. These information are then provided as additional build arguments to the docker build command. Using them the Dockerfile is always downloading the correct and most up2date versions to be able to build the image.
 
 - Build Triggers
-  - GitHub project: `https://github.com/MyUncleSam/docker-syncovery/`
+  - GitHub project: `https://github.com/LakeShoreSavings/docker-syncovery/`
   - URLTrigger
     - URL: `https://www.syncovery.com/linver_x86_64-Web.tar.gz.txt`
     - Inspect URL content:
@@ -237,7 +238,7 @@ echo GUARD_VERSION=${GUARD_VERSION}
 echo GUARD_DOWNLOADLINK=${GUARD_DOWNLOADLINK}
 ```
 - Build Triggers
-  - GitHub project: `https://github.com/MyUncleSam/docker-syncovery/`
+  - GitHub project: `https://github.com/LakeShoreSavings/docker-syncovery/`
   - This project is parameterized
     - #1
       - Name: `SYNCOVERY_VERSION`
@@ -246,7 +247,7 @@ echo GUARD_DOWNLOADLINK=${GUARD_DOWNLOADLINK}
       - Name: `SYNCOVERY_DOWNLOADURL`
       - Trim the string: `yes`
 - Source Code Management: Git
-  - Repository URL: `https://github.com/MyUncleSam/docker-syncovery.git`
+  - Repository URL: `https://github.com/LakeShoreSavings/docker-syncovery.git`
 - Build Triggers
   - Trigger builds Remotely (e.g. from scripts)
     - Authentication Token: `choose your own token here - avoid special characters`
