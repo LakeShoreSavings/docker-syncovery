@@ -87,9 +87,9 @@ This image uses the default ports:
                 - 8900:8900
                 - 8949:8949
 
-# Docker run (exmample)
+# Docker run (example)
 
-    docker run -d --name=syncovery -v /opt/docker/syncovery/config:/config -v /opt/docker/syncovery/tmp:/tmp -p 8999:8999 stefanruepp/syncoverycl
+    docker run -d --name=syncovery -v /opt/docker/syncovery/config:/config -v /opt/docker/syncovery/tmp:/tmp -p 8999:8999 lakeshoresavings/syncoverycl
 
 # Tags
 
@@ -105,14 +105,14 @@ At the moment I build Ubuntu and Alpine images (attention: Alpine is no longer s
     - Password: pass
 
 # Github
-repository of this container: https://github.com/MyUncleSam/docker-syncovery
+repository of this container: https://github.com/LakeShoreSavings/docker-syncovery
 
 hlince original github repository: https://github.com/Howard3/docker-syncovery
 
 # Automatic builds
 Since 2021 this docker images are built using https://www.jenkins.io/ (this is my first jenkins integration, so if you have some advices - please let me know).
 
-To achive that the following urls are used to parse the most up2date versions:
+To achieve that the following urls are used to parse the most up2date versions:
 - https://www.syncovery.com/linver_x86_64-Web.tar.gz.txt
 - https://www.syncovery.com/linver_guardian_x86_64.tar.gz.txt
 - https://www.syncovery.com/linver_rs_x86_64.tar.gz.txt
